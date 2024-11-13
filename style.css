@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.cells {
+    border: .1rem solid #000000;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+
+.cells div:hover {
+    background-color: beige;
+}
+
+.cells div{
+    border: .1rem solid #000000;
+    width: 10rem;
+    height: 10rem;
+    padding: 3rem; 
+    cursor: pointer;
+}
