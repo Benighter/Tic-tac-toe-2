@@ -24,19 +24,19 @@ cell.forEach((cell) => {
       gameBoard[index] = currentPlayer;
       cell.textContent = currentPlayer;
 
-      if (checkWins()) {
-        gameActive = false;
-        alert(`player ${currentPlayer} wins!!!`);
-        return;
-      }
+      setTimeout(() => {
+        if (checkWins()) {
+          gameActive = false;
+          alert(`player ${currentPlayer} wins!!!`);
+          return;
+        } else if (!gameBoard.includes("")) {
+          gameActive = false;
+          alert("It's a draw!!!");
+          return;
+        }
 
-      if (!gameBoard.includes("")) {
-        gameActive = false;
-        alert("It's a draw!!!");
-        return;
-      }
-
-      currentPlayer = currentPlayer === "X" ? "O" : "X";
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+      }, 3);
     }
   });
 });
