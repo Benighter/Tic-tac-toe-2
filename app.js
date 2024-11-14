@@ -57,9 +57,7 @@ function checkWins() {
 
 function restart() {
   cell.forEach((cell) => {
-    gameBoard = ["", "", "", "", "", "", "", "", ""];
     cell.textContent = "";
-    currentPlayer = "X"
-    gameState = true;
   });
+  location.reload();
 }
