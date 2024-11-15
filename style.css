@@ -140,4 +140,38 @@
       font-size: 1rem;
     }
   }
+
+  @media (max-width: 154px) {
+    .cell {
+      width: 1.5rem;
+      height:  1.5rem;
+      font-size: .75rem;
+    }
+  
+    .reset-button button {
+      padding: 0.1rem .25rem;
+      font-size: .25rem;
+    }
+  
+    .heading {
+      font-size: .5rem;
+    }
+  }
+
+  @media (max-width: 78px) {
+    .cell {
+      width: .75rem;
+      height:  .75rem;
+      font-size: .3.5rem;
+    }
+  
+    .reset-button button {
+      padding: 0.05rem .12rem;
+      font-size: .12rem;
+    }
+  
+    .heading {
+      font-size: .25rem;
+    }
+  }
   
