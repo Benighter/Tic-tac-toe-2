@@ -17,49 +17,52 @@ let winningCombo = [
 ];
 
 cell.forEach((cell) => {
-  cell.addEventListener("click", function () {
-    // console.log("clicked:", cell.getAttribute("data-index"))
-    let index = cell.getAttribute("data-index");
-    if (gameBoard[index] === "" && gameActive) {
-      gameBoard[index] = currentPlayer;
-      cell.textContent = currentPlayer;
-
-      if (checkWins()) {
-        gameActive = false;
-        alert(`player ${currentPlayer} wins!!!`);
-        return;
+    cell.addEventListener("click", function () {
+      let index = cell.getAttribute("data-index");
+      if (gameBoard[index] === "" && gameActive) {
+        gameBoard[index] = currentPlayer;
+        cell.textContent = currentPlayer;
+        cell.classList.add(currentPlayer);
+        
+        setTimeout(() => {
+          if (checkWins()) {
+            gameActive = false;
+            alert(`Player ${currentPlayer} wins!!!`);
+            return;
+          }
+  
+          if (!gameBoard.includes("")) {
+            gameActive = false;
+            alert("It's a draw!!!");
+            return;
+          }
+  
+          currentPlayer = currentPlayer === "X" ? "O" : "X";
+        }, 10);
       }
-
-      if (!gameBoard.includes("")) {
-        gameActive = false;
-        alert("It's a draw!!!");
-        return;
-      }
-
-      currentPlayer = currentPlayer === "X" ? "O" : "X";
-    }
+    });
   });
-});
 
-function checkWins() {
-  for (const combo of winningCombo) {
-    const [a, b, c] = combo;
-    if (
-      gameBoard[a] &&
-      gameBoard[a] === gameBoard[b] &&
-      gameBoard[a] === gameBoard[c]
-    ) {
-      return true;
+  function checkWins() {
+    for (const combo of winningCombo) {
+      const [a, b, c] = combo;
+      if (
+        gameBoard[a] &&
+        gameBoard[a] === gameBoard[b] &&
+        gameBoard[a] === gameBoard[c]
+      ) {
+        return true;
+      }
     }
+    return false;
   }
-  return false;
-}
-
-function restart() {
-  cell.forEach((cell) => {
+  
+  function restart() {
     gameBoard = ["", "", "", "", "", "", "", "", ""];
-    cell.textContent = "";
-    currentPlayer = "X"
-    gameState = true;
-  });
-}
+    currentPlayer = "X";
+    gameActive = true;
+    cell.forEach((cell) => {
+      cell.textContent = "";
+      cell.className = "cell"; 
+    });
+  }
